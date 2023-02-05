@@ -1,0 +1,46 @@
+
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 75rem;
+  width: 100%;
+  background-color: rgb(254, 252, 247);
+  border-radius: 1rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+.link {
+  display: inline-block;
+  font-size: 2rem;
+  font-family: inherit;
+  width: 30%;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+  border: 0.16rem solid rgb(151, 111, 195);
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  transition: all 0.3s;
+
+}
+
+.link:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+.link:hover {
+  background-color: rgba(155, 111, 202, 0.817);
+  color: rgb(251, 238, 217);
+}
+
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+}

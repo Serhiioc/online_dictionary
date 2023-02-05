@@ -1,0 +1,25 @@
+.wrapper {
+    margin: 5rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.button {
+    margin: 0 auto;
+    padding: 0.5rem;
+    display: block;
+    width: 13rem;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    background-color: rgb(251, 238, 217);
+    border-radius: 0.3rem;
+    color: rgb(43, 43, 43);
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    border: 2px solid rgb(151, 111, 195);
+}

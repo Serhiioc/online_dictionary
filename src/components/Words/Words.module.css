@@ -1,0 +1,22 @@
+.item {
+    margin: .8rem;
+    padding: .8rem;
+    width: 15rem;
+    font-size: 1.5rem;
+    background-color: rgb(216, 120, 47);
+    border-radius: 0.4rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: rgb(151, 111, 195);
+}
+
+.word {
+    margin: 0.2rem;
+    padding: .5rem;
+    width: 45%;
+    text-align: center;
+    background-color: rgb(251, 238, 217);
+    border-radius: 0.3rem;
+    color: rgb(43, 43, 43);
+}
