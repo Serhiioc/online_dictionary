@@ -42,7 +42,7 @@ class Audit extends Component {
 
     componentDidMount = () => {
         const { arrWords } = this.props;
-        const result = this.selectedWordForAudit(arrWords, 6);
+        const result = this.selectedWordForAudit(arrWords, 11);
         const answerArr = this.selectedAnswers(result);
 
         this.setState({

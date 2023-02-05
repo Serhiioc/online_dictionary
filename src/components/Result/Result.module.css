@@ -1,13 +1,13 @@
+
+
 .result {
     margin: 0 auto;
     margin-bottom: 5rem;
-    width: 150px;
+    /* width: 50%; */
     text-align: center;
     padding: 0.5rem;
     font-size: 1.8rem;
-    text-transform: uppercase;
     background-color: rgb(216, 120, 47);
     color: rgb(47, 47, 47);
     border-radius: 0.3rem;
-    
 }
