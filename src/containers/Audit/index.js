@@ -14,7 +14,19 @@ class Audit extends Component {
         auditArr: [],
         answerArr: [],
         progress: 0,
-        }
+    }
+
+    componentDidMount = () => {
+        const { arrWords } = this.props;
+        const result = this.selectedWordForAudit(arrWords, 11);
+        const answerArr = this.selectedAnswers(result);
+        this.setState({
+            auditArr: result,
+            answerArr: answerArr
+        })
+        
+        
+    }
     
     randomNum = (num) => Math.round(Math.random() * num);
      
@@ -40,18 +52,7 @@ class Audit extends Component {
         return result;
     }
 
-    componentDidMount = () => {
-        const { arrWords } = this.props;
-        const result = this.selectedWordForAudit(arrWords, 11);
-        const answerArr = this.selectedAnswers(result);
-
-        this.setState({
-            auditArr: result,
-            answerArr: answerArr
-        })
-        
-        console.log(this.state);
-    }
+   
     
     handleClick = (e) => {
         console.log('click');
@@ -81,6 +82,19 @@ class Audit extends Component {
         )
     }
 
+    onRefreshAudit = () => {
+        const { arrWords } = this.props;
+        const result = this.selectedWordForAudit(arrWords, 11);
+        const answerArr = this.selectedAnswers(result, -10);
+        this.setState({
+            auditArr: result,
+            answerArr: answerArr,
+            index: 0,
+            progress: 0,
+
+        })
+    }
+
     render() { 
         const audit = this.state.auditArr[0] && 
             <> 
@@ -92,7 +106,7 @@ class Audit extends Component {
             <div className= {styles.audit__wrapper}> 
                 {this.state.index < (this.state.auditArr.length-1)
                     ?audit
-                    :<Result progress = {this.state.progress}/>
+                    :<Result progress = {this.state.progress} onRefresh = {this.onRefreshAudit} />
                 }
             </div>
         );

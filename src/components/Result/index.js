@@ -1,6 +1,6 @@
 import styles from "./Result.module.css";
 
-function Result({progress}) {
+function Result({progress, onRefresh}) {
     const result = progress * 10;
     let message = '';
     switch (true) {
@@ -19,7 +19,10 @@ function Result({progress}) {
             break;
     }
     return ( 
-            <div className= {styles.result}><p>{message}</p> Ваш результат - {result}%</div>
+            <div className= {styles.result}>
+                <p>{message} <br/>Ваш результат - {result}%</p>
+                <button className= {styles.refresh} onClick={() => onRefresh()}>Повторити знову</button>
+            </div>
      );
 }
 
