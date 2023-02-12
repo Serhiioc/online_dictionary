@@ -18,8 +18,8 @@ class Audit extends Component {
 
     componentDidMount = () => {
         const { arrWords } = this.props;
-        const result = this.selectedWordForAudit(arrWords, 11);
-        const answerArr = this.selectedAnswers(result);
+        const result = this.createWordsArrayForAudit(arrWords, 11);
+        const answerArr = this.createAnswerArray(result);
         this.setState({
             auditArr: result,
             answerArr: answerArr
@@ -31,8 +31,8 @@ class Audit extends Component {
     randomNum = (num) => Math.round(Math.random() * num);
      
 
-    selectedAnswers = (array, num = 0) => {
-        const answerArr = this.selectedWordForAudit(array, 4);
+    createAnswerArray = (array, num = 0) => {
+        const answerArr = this.createWordsArrayForAudit(array, 4);
         if (!answerArr.includes(array[(this.state.index + num)])) {
             const count = this.randomNum(answerArr.length-1);
             answerArr[count] = array[(this.state.index + num)];
@@ -40,7 +40,7 @@ class Audit extends Component {
         return answerArr;
      }
 
-    selectedWordForAudit = (array, count) => {
+    createWordsArrayForAudit = (array, count) => {
         let result = [];
         for (let i = 0; i < count; ) {
             const index = this.randomNum((array.length - 1));
@@ -77,21 +77,20 @@ class Audit extends Component {
         this.setState(
             {
                 index:this.state.index+1,
-                answerArr: this.selectedAnswers(this.state.auditArr, 1),
+                answerArr: this.createAnswerArray(this.state.auditArr, 1),
             }
         )
     }
 
     onRefreshAudit = () => {
         const { arrWords } = this.props;
-        const result = this.selectedWordForAudit(arrWords, 11);
-        const answerArr = this.selectedAnswers(result, -10);
+        const result = this.createWordsArrayForAudit(arrWords, 11);
+        const answerArr = this.createAnswerArray(result, -10);
         this.setState({
             auditArr: result,
             answerArr: answerArr,
             index: 0,
             progress: 0,
-
         })
     }
 
