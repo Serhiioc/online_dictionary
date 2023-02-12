@@ -17,13 +17,13 @@ function App() {
         <div className={styles.app}>
           <h1 className= {styles.title}> Онлайн словник</h1>
           <nav className= {styles.nav}>
-            <Link className= {styles.link} to = '/'> Головна </Link>
+            <Link className= {styles.link} to = '/online_dictionary'> Головна </Link>
             <Link className= {styles.link} to = '/add-words'> Додавання слів </Link>
             <Link className= {styles.link} to = '/audit'> Перевірка </Link>
           </nav>
 
           <Routes>
-            <Route examp path='/'  element={<Main/>} />
+            <Route examp path='/online_dictionary'  element={<Main/>} />
             <Route examp path='/add-words'  element={<AddedWords/>} />
             <Route examp path='/audit'  element={<Audit/>} />
           </Routes>
