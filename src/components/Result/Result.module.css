@@ -23,6 +23,7 @@
     color: rgb(43, 43, 43);
     border: none;
     cursor: pointer;
+    border: 2px solid transparent;
 }
 
 .refresh:hover {
