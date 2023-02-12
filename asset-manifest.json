@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/online_dictionary/static/css/main.18e8961a.css",
+    "main.js": "/online_dictionary/static/js/main.ab268fe5.js",
+    "static/js/787.cab2cbb6.chunk.js": "/online_dictionary/static/js/787.cab2cbb6.chunk.js",
+    "index.html": "/online_dictionary/index.html",
+    "main.18e8961a.css.map": "/online_dictionary/static/css/main.18e8961a.css.map",
+    "main.ab268fe5.js.map": "/online_dictionary/static/js/main.ab268fe5.js.map",
+    "787.cab2cbb6.chunk.js.map": "/online_dictionary/static/js/787.cab2cbb6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.18e8961a.css",
+    "static/js/main.ab268fe5.js"
+  ]
+}
