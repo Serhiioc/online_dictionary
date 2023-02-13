@@ -9,36 +9,26 @@ import Question from '../../components/Question';
 
 class Audit extends Component {
 
-    state = { 
-        index: 0,
+    state = {
         auditArr: [],
         answerArr: [],
+        index: 0,
         progress: 0,
     }
 
     componentDidMount = () => {
-        const { arrWords } = this.props;
-        const result = this.createWordsArrayForAudit(arrWords, 11);
-        const answerArr = this.createAnswerArray(result);
-        this.setState({
-            auditArr: result,
-            answerArr: answerArr
-        })
-        
-        
+        this.onRefreshAudit(0)
     }
-    
-    randomNum = (num) => Math.round(Math.random() * num);
-     
 
-    createAnswerArray = (array, num = 0) => {
-        const answerArr = this.createWordsArrayForAudit(array, 4);
-        if (!answerArr.includes(array[(this.state.index + num)])) {
-            const count = this.randomNum(answerArr.length-1);
-            answerArr[count] = array[(this.state.index + num)];
+    componentDidUpdate = () => {
+        if(this.state.index === this.state.auditArr.length){
+            return false
+        } else {
+            return true
         }
-        return answerArr;
-     }
+    }
+
+    randomNum = (num) => Math.round(Math.random() * num);
 
     createWordsArrayForAudit = (array, count) => {
         let result = [];
@@ -52,13 +42,18 @@ class Audit extends Component {
         return result;
     }
 
-   
+    createAnswerArray = (array, num = 0) => {
+        const answerArr = this.createWordsArrayForAudit(array, 4);
+        if (!answerArr.includes(array[(this.state.index + num)])) {
+            const count = this.randomNum(answerArr.length-1);
+            answerArr[count] = array[(this.state.index + num)];
+        }
+        return answerArr;
+    }
     
     handleClick = (e) => {
-        console.log('click');
-        if(e.target.tagName === 'BUTTON' && this.state.index < (this.state.auditArr.length-1)) {
+        if(e.target.tagName === 'BUTTON') {
             this.updateButtons();
-        } else {
         }
         this.checkedAnswer(e)
         
@@ -76,35 +71,35 @@ class Audit extends Component {
     updateButtons = () => {
         this.setState(
             {
-                index:this.state.index+1,
+                index: this.state.index+1,
                 answerArr: this.createAnswerArray(this.state.auditArr, 1),
             }
         )
     }
 
-    onRefreshAudit = () => {
+    onRefreshAudit = (num) => {
         const { arrWords } = this.props;
-        const result = this.createWordsArrayForAudit(arrWords, 11);
-        const answerArr = this.createAnswerArray(result, -10);
+        const result = this.createWordsArrayForAudit(arrWords, 10);
         this.setState({
             auditArr: result,
-            answerArr: answerArr,
+            answerArr: this.createAnswerArray(result, num),
             index: 0,
             progress: 0,
         })
     }
 
     render() { 
-        const audit = this.state.auditArr[0] && 
-            <> 
-                <Question title={this.state.auditArr[this.state.index].eng}/>
-                <Buttons answerArr={this.state.answerArr} handleClick = {this.handleClick}/>
-            </>
-        
+        if (!this.state.auditArr[0]) {
+            return 
+        }
+
         return (
             <div className= {styles.audit__wrapper}> 
-                {this.state.index < (this.state.auditArr.length-1)
-                    ?audit
+                {this.state.index < (this.state.auditArr.length)
+                    ?<> 
+                        <Question title={this.state.auditArr[this.state.index].eng}/>
+                        <Buttons answerArr={this.state.answerArr} handleClick = {this.handleClick}/>
+                     </>
                     :<Result progress = {this.state.progress} onRefresh = {this.onRefreshAudit} />
                 }
             </div>

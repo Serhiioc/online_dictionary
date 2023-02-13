@@ -21,7 +21,7 @@ function Result({progress, onRefresh}) {
     return ( 
             <div className= {styles.result}>
                 <p>{message} <br/>Ваш результат - {result}%</p>
-                <button className= {styles.refresh} onClick={() => onRefresh()}>Повторити знову</button>
+                <button className= {styles.refresh} onClick={() => onRefresh(-10)}>Повторити знову</button>
             </div>
      );
 }
