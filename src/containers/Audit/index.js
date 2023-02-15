@@ -21,11 +21,7 @@ class Audit extends Component {
     }
 
     componentDidUpdate = () => {
-        if(this.state.index === this.state.auditArr.length){
-            return false
-        } else {
-            return true
-        }
+        return !(this.state.index === this.state.auditArr.length)
     }
 
     randomNum = (num) => Math.round(Math.random() * num);
